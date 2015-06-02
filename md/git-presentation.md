@@ -2,6 +2,10 @@
 --------------
 ## Git setup (windows)
 
+Note:
+
+#pdf with installation instructions via email
+
 msysgit 
 
 ![](https://msysgit.github.io/img/gwindows_logo.png)
@@ -146,17 +150,23 @@ To add a file to the index:
 	
 	$ git add my-new-file.ext
 
-Unstaging a Staged File:
-
-	$ git reset HEAD my-file.ext
 
 --------------
 
 #### Staging area / The index (cont.)
 
-To see what is staged and will go into next commit
-	
-	$git diff --staged
+**Ooops!**
+
+Unstaging a staged file:
+
+	$ git reset HEAD my-file.ext
+
+Unmodifying a modified file
+
+	$ git checkout -- my-file.ext
+--------------
+
+#### Staging area / The index (cont.)
 
 To add all changes
 
@@ -165,6 +175,10 @@ To add all changes
 To commit the changes saved in the index, and clear the index afterwards:
 
 	$ git commit
+
+To see what is staged and will go into next commit
+	
+	$ git diff --staged
 
 --------------
 
@@ -187,6 +201,10 @@ every branch (or tag) you checked out resides in a separate folder.
 
 --------------
 
+![](http://anishjoshi.github.io/Starting-with-Git-and-GitHub/images/git_branch_strategy.png)
+
+--------------
+
 
 When in a Git repository, you are always in a branch
 
@@ -199,7 +217,11 @@ v--------------
 
 ### Examinig branches
 
+Lists remote branches
+
 	$ git branch -r
+
+List all tracked branches
 
 	$ git branch -a
 
@@ -218,6 +240,98 @@ Switching from branch to branch
 	$ git checkout my-new-branch
 
 --------------
+### Merging 
+
+brings the contents of another branch (possibly from an external repository) into the current branch.
+
+### To merge two branches, we have to move to the branch that contains the other branch commits
+
+--------------
+
+### Merging - Happy path
+
+Note:
+
+### Fast-Forward merges
+
+*Switch(checkout) to target branch
+
+	$ git checkout target-branch
+
+*Apply the merge
+
+	$ git merge my-new-feature-branch
+
+*We are done!
+
+
+
+--------------
+
+### Merging - Sad path (conflicts - 1)
+
+*Switch(checkout) to target branch
+
+	$ git checkout target-branch
+
+*Apply the merge
+
+	$ git merge my-new-feature-branch
+	
+	Auto-merging my-file.cpp
+	CONFLICT (content): Merge conflict in my-file.cpp
+	Automatic merge failed; fix conflicts and then commit the result.
+
+*Check your status
+
+	$ git status
+
+	On branch master
+	You have unmerged paths.
+	(fix conflicts and run "git commit")
+
+--------------
+### Merging - Sad path (conflicts - 2)
+
+*Resolve conflicts
+	
+	$ git mergetool
+
+*Check status
+
+	$ git status
+	
+	On branch master
+	All conflicts fixed but you are still merging.
+	(use "git commit" to conclude merge)
+
+*Conclude merge
+
+	$ git commit
+
+--------------
+
+### Comparing Branches
+
+Difference between branches
+
+ 	$ git diff source-branch..target branch
+
+Another:
+
+	$ git log my-branch..master
+
+--------------
+
+## Conflicts
+A conflict-marked area begins with
+<<<<<<< 
+
+and ends with >>>>>>>.
+ 
+The two conflicting blocks themselves are divided
+by a sequence of =======. 
+
 ### Tags
 
 ###**Tags are immutable references**
@@ -230,17 +344,32 @@ Switching from branch to branch
 
 ### Two flavours
 
-simple:
+Simple:
 
 	$ git tag some-descriptive-tag
 
-annotated (preferrable):
+Annotated (preferrable):
 
 	$ git tag -a v1 -m "Version 1 release"
 
+--------------
+
+### Tag Operations
+
+Listing Tags
+
+	$ git tag
+
+Searching for a tag
+
+	$ git tag -l 'v1.8.5*'
+
+Arbitary Taging 
+
+	$ git tag -a v1.2 9fceb02
 v--------------
 
-###Important
+##Important
 
 Tags are ***not*** pushed by default to remote repositories
 
@@ -265,8 +394,6 @@ By default you'll only have the "origin" remote repository, which is the reposit
 Show details with
  
 	$ git remote show NAME
-
-	$ git remote show origin
 
 Add new remotes using
 
@@ -333,47 +460,3 @@ v--------------
 
 --------------
 
-### Merging 
-
-brings the contents of another branch (possibly from an external repository) into the current branch.
-
-### To merge two branches, we have to move to the branch that contains the other branch commits
-
-v--------------
-
-*Switch(checkout) to target branch
-
-	$ git checkout target-branch
-
-*Apply the merge
-
-	$ git merge my-new-feature-branch
-
-*Either resolve potential conflicts or we are done!
-
-*(Note on Fast-Forward)*
-
---------------
-
-### Comparing Branches
-
- 	$ git diff source-branch..target branch
-
-GUI clients work best here:
-
-	$ git mergetool
-
-Another way would be:
-
-	$ git log my-branch..master
-
---------------
-
-## Conflicts
-A conflict-marked area begins with
-<<<<<<< 
-
-and ends with >>>>>>>.
- 
-The two conflicting blocks themselves are divided
-by a sequence of =======. 
