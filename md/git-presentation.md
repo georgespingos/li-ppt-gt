@@ -106,6 +106,10 @@ The name for the commit thats currently checked out in the working tree.
 
 --------------
 
+# A "master repoistory" is a policy decision, not a technical one.
+
+--------------
+
 ## Setup Local repository
 
 To set up a git repository locally:
@@ -113,25 +117,14 @@ To set up a git repository locally:
 
     $ git init
 
-Every commit gets a globally unique identifier (SHA-1 hush)
+Every commit gets a globally unique identifier (SHA-1)
  
 > 93ae4a12f286da8bdf24b041c2e8dfc4e3b
 
 
 Note:
 git works with snapshots not revisions
-
---------------
-
-### Commits are local
-
-* git commit affects **only ** your repository 
-
-* Commits are cheap & fast
-
-* **Commit as often as possible!**
-
-*git push in order to share your commits*
+SAH is a unique cryptographic hash, chances of collisions are practically 0
 
 --------------
 
@@ -146,21 +139,43 @@ When you edit/add/remove files, only **your** working tree changes.
 
 --------------
 
+### Staging area / The index (cont.)
+
+#### File Classifications in Git
+
+* Tracked
+* Ignored
+* Untracked
+
+Note:
+
+tracked: any file already in the repository or any file that is staged in the index. 
+
+ignored: must be explicitly declared invisible or ignored in the repository even though it may be present within your working directory
+
+untracked: is any file not found in either of the previous two categories
+
+.gitignore special file
+
+per stack case
+
+--------------
+
 #### Staging area / The index (cont.)
 
 To show the current index state
  
 	$ git status 
 
-To add a file to the index:
+To add a file to the index
 	
 	$ git add my-new-file.ext
 
-Note:
-#### .gitignore special file
-#### per stack case
+To add all changes
 
---------------
+	$ git add . [--all]
+
+v--------------
 
 #### Staging area / The index (cont.)
 
@@ -173,37 +188,87 @@ Unstaging a staged file:
 Unmodifying a modified file
 
 	$ git checkout -- my-file.ext
+
+To convert a file from staged to unstaged
+
+	$ git rm --cached my-file.ext
+
 --------------
 
 #### Staging area / The index (cont.)
 
-To add all changes
-
-	$ git add . [--all]
-
-To commit the changes saved in the index:
-
-	$ git commit
 
 View commit history	
 
 	$ git log
 
-To see what is staged and will go into next commit
+To see what is staged
 	
 	$ git diff --staged
+
+To commit the changes saved in the index
+
+	$ git commit
+
+v--------------
+
+Under the hood of the index
+	
+	$ git ls-files --stage
+
+--------------
+
+### Commiting changes
+
+## A commit is a two-step process
+
+* stage your changes 
+* commit the changes
+
+--------------
+
+## Every Git commit represents a single, atomic changeset
+
+--------------
+
+### Commiting changes (cont)
+
+* Commits are local
+
+* git commit affects **only ** your repository 
+
+* Commits are cheap & fast
+
+* **Commit as often as possible!**
+
+--------------
+
+### Reposity history
+
+shows repo/branch history
+	
+	$ git log
+
+*has a gazillion switches to make it display everything* 
 
 --------------
 
 ## Branching
 
-A branch is essentially another way your repository takes (parallel universe).
+A branch is essentially another way the repository takes (parallel universe).
 
 --------------
 
-SVN/TFS vs Git
+### Branching
+
+![](http://image.slidesharecdn.com/git-branching-model-130205024231-phpapp01/95/git-branching-model-7-638.jpg?cb=1360032415)
 
 --------------
+
+# SVN/TFS vs Git
+
+--------------
+
 ### SVN/TFS
 
 every branch (or tag) you check out resides in a **separate ** folder. 
@@ -215,11 +280,6 @@ every branch (or tag) you check out resides in a **separate ** folder.
 *files and folders of the previous branch are **replaced** with those in the new branch (using magic and fairy dust).*
 
 --------------
-
-![](http://anishjoshi.github.io/Starting-with-Git-and-GitHub/images/git_branch_strategy.png)
-
---------------
-
 
 When in a Git repository, you are always in a branch
 
@@ -234,7 +294,7 @@ v--------------
 
 ### Examinig branches
 
-Lists remote branches
+List remote branches
 
 	$ git branch -r
 
@@ -242,34 +302,53 @@ List all tracked branches
 
 	$ git branch -a
 
+More hardcore details
+
+	$ git show-branch
+
 --------------
+
+### Branch Management 
 
 Creating a new branch
 
-	$ git branch my-new-branch
+	$ git branch my-new-branch [start-point]
 
 Creating and switching to new branch all in one
 
-	$ git checkout -b my-new-branch
+	$ git checkout -b my-new-branch [start-point]
 
 Switching from branch to branch
 
 	$ git checkout my-new-branch
 
 --------------
+
+### Branch Management (cont.)
+
+Delete local branch
+
+	$ git branch -d the_local_branch
+
+Delete Remote Branches
+	
+	$ git push origin --delete remote-branch
+
+
+Note:
+Git prevents you from deleting the current branch, switch somewhere else first!
+
+--------------
+
 ### Merging 
 
-brings the contents of another branch (possibly from an external repository) into the current branch.
+brings the contents of another branch  into the current branch.
 
-### To merge two branches, we have to move to the branch that contains the other branch commits
+### * To merge two branches, we have to start from the target branch *  
 
 --------------
 
 ### Merging - Happy path
-
-Note:
-
-### Fast-Forward merges
 
 *Switch(checkout) to target branch
 
@@ -281,7 +360,9 @@ Note:
 
 *We are done!
 
+Note:
 
+### Fast-Forward merges
 
 --------------
 
@@ -348,6 +429,8 @@ and ends with >>>>>>>.
  
 The two conflicting blocks themselves are divided
 by a sequence of =======. 
+
+--------------
 
 ### Tags
 
@@ -418,10 +501,6 @@ Add new remotes using
 
 --------------
 
-# A "master repoistory" is a policy decision, not a technical one.
-
---------------
-
 
 ### Pushing a new branch to the remote
 
@@ -468,12 +547,12 @@ v--------------
 
 **It is context sensitive** 
 
+Note:
+###Beware: automatically merges the commits without letting you review them first
+
 v--------------
 
-### Notes on pull:
 
-
-### **Beware: automatically merges the commits without letting you review them first**
 
 --------------
 
