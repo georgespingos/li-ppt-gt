@@ -19,6 +19,23 @@ Git Extensions
 
 *Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline.*
 
+
+--------------
+## Git Tools/Integration
+
+![](http://files.cyberciti.biz/cbzcache/3rdparty/terminal.png)
+
+You don't really need anything else!
+
+v--------------
+
+* Microsoft Visual Studio (even 2005)
+* Sublime Text 2/3
+* notepad++
+* eclipse
+* Oracle Solaris Studio
+* Anything from this decade...
+
 --------------
 
 ## Notables Settings (1)
@@ -41,21 +58,7 @@ Windows users:
 	$ git config --global core.autocrlf true
 	$ git config --global core.safecrlf true
 
---------------
-### Git Integration
 
-**bash**
-
-You don't really need anything else!
-
-v--------------
-
-* Microsoft Visual Studio (even 2008)
-* Sublime Text 2/3
-* notepad++
-* eclipse
-* Oracle Solaris Studio
-* Anything from this decade...
 
 --------------
 
@@ -82,7 +85,8 @@ A collection of commits & branches, saved in the .git directory.
 ## Definitions... 
 
 ###Commit
-A snapshot of your working tree at a certain point in time, identified by a revision number.
+
+A snapshot of your working tree at a certain point in time
 
 --------------
 
@@ -189,9 +193,26 @@ Unmodifying a modified file
 
 	$ git checkout -- my-file.ext
 
-To convert a file from staged to unstaged
+--------------
 
-	$ git rm --cached my-file.ext
+Removing a file
+
+	$ git rm [--cached] my-file.ext
+
+Removing a file from your directory and the index does not remove the file’s existing history from the repository. 
+
+
+Note:
+* git rm --cached removes the file from the index and leaves it in the working directory
+
+* git rm removes the file from both the index and the working directory
+
+--------------
+
+### About Removing a file
+
+Any versions of the file that are part of its history already
+committed in the repository remain in the object store and retain that history.
 
 --------------
 
@@ -337,6 +358,8 @@ Delete Remote Branches
 
 Note:
 Git prevents you from deleting the current branch, switch somewhere else first!
+
+### Git won’t allow you to delete a branch that contains commits that are not also present on the current branch. Unreachable commits :(
 
 --------------
 
@@ -523,7 +546,8 @@ Push beaviour
 
 
 --------------
-### Checking for modifications
+### Get all changes from remote
+### (for paranoid devs)
 
 	$ git fetch
 
@@ -541,7 +565,8 @@ v--------------
 
 --------------
 
-### Get all changes from remote
+### Get all changes from remote 
+### (for trusting devs)
 
 	$ git pull
 
@@ -552,7 +577,8 @@ Note:
 
 v--------------
 
-
+# Git workflow
 
 --------------
 
+# Questions/Demo
