@@ -2,13 +2,14 @@
 --------------
 ## Git setup (windows)
 
-Note:
-
-#pdf with installation instructions via email
-
 msysgit 
 
 ![](https://msysgit.github.io/img/gwindows_logo.png)
+
+
+Note:
+
+###pdf with installation instructions via email
 
 --------------
 
@@ -112,14 +113,19 @@ To set up a git repository locally:
 
     $ git init
 
-Every commit gets a globally unique identifier (SHA-1 hush), not a simple revision number 
+Every commit gets a globally unique identifier (SHA-1 hush)
+ 
 > 93ae4a12f286da8bdf24b041c2e8dfc4e3b
+
+
+Note:
+git works with snapshots not revisions
 
 --------------
 
 ### Commits are local
 
-* git commit only affects your repository, **not** the origin or any other remote repository
+* git commit affects **only ** your repository 
 
 * Commits are cheap & fast
 
@@ -150,12 +156,15 @@ To add a file to the index:
 	
 	$ git add my-new-file.ext
 
+Note:
+#### .gitignore special file
+#### per stack case
 
 --------------
 
 #### Staging area / The index (cont.)
 
-**Ooops!**
+**Oops!**
 
 Unstaging a staged file:
 
@@ -170,11 +179,15 @@ Unmodifying a modified file
 
 To add all changes
 
-	$ git add . [-all]
+	$ git add . [--all]
 
-To commit the changes saved in the index, and clear the index afterwards:
+To commit the changes saved in the index:
 
 	$ git commit
+
+View commit history	
+
+	$ git log
 
 To see what is staged and will go into next commit
 	
@@ -188,16 +201,18 @@ A branch is essentially another way your repository takes (parallel universe).
 
 --------------
 
+SVN/TFS vs Git
 
-### In SVN and TFS
+--------------
+### SVN/TFS
 
-every branch (or tag) you checked out resides in a separate folder. 
+every branch (or tag) you check out resides in a **separate ** folder. 
 
 --------------
 
 ### In Git
 
-*every time you check out a branch, files and folders of the previous branch are **replaced** with those in the new branch (using magic and fairy dust).*
+*files and folders of the previous branch are **replaced** with those in the new branch (using magic and fairy dust).*
 
 --------------
 
@@ -211,7 +226,9 @@ When in a Git repository, you are always in a branch
 	$ git branch
 
 
-*(warning: detached HEAD)*
+Note: 
+
+#### detached HEAD
 
 v--------------
 
