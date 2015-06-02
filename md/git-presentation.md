@@ -1,5 +1,35 @@
 ![](https://git-scm.com/images/logos/downloads/Git-Icon-1788C.png)
 --------------
+
+##Git
+
+* Distributed version control system
+	
+* Really fast and efficient
+
+* Branches are cheap and encouraged
+
+* Knows how to merge
+
+* encourages agile practices
+
+Note:
+
+Frictionless Context Switching
+Disposable Experimentation.
+Feature Based Workflow
+
+--------------
+
+Please stay calm and do not panic!
+
+---
+
+# **Git does not support file locking by design**
+
+---
+
+--------------
 ## Git setup (windows)
 
 msysgit 
@@ -121,7 +151,7 @@ To set up a git repository locally:
 
     $ git init
 
-Every commit gets a globally unique identifier (SHA-1)
+Git uses globally unique identifier (SHA-1) extensively
  
 > 93ae4a12f286da8bdf24b041c2e8dfc4e3b
 
@@ -143,12 +173,12 @@ When you edit/add/remove files, only **your** working tree changes.
 
 --------------
 
-### Staging area / The index (cont.)
+## Staging area / The index (cont.)
 
-#### File Classifications in Git
+### File Classifications in Git
 
-* Tracked
 * Ignored
+* Tracked
 * Untracked
 
 Note:
@@ -181,7 +211,7 @@ To add all changes
 
 v--------------
 
-#### Staging area / The index (cont.)
+### Staging area / The index (cont.)
 
 **Oops!**
 
@@ -195,11 +225,13 @@ Unmodifying a modified file
 
 --------------
 
+### Staging area / The index (cont.)
+
 Removing a file
 
 	$ git rm [--cached] my-file.ext
 
-Removing a file from your directory and the index does not remove the file’s existing history from the repository. 
+Removing a file from your directory and the index does not remove the file's existing history from the repository. 
 
 
 Note:
@@ -211,17 +243,30 @@ Note:
 
 ### About Removing a file
 
+---
+
+### Warning: Nuclear option 
+
+	$ git filter-branch --tree-filter 'rm -f file-doeradicate.ext'HEAD
+
+---
+
+Note:
 Any versions of the file that are part of its history already
 committed in the repository remain in the object store and retain that history.
 
 --------------
 
-#### Staging area / The index (cont.)
+### Staging area / The index (cont.)
 
 
 View commit history	
 
 	$ git log
+
+	$ git log --abbrev-commit --pretty=oneline
+
+*has a gazillion switches to make it display everything*
 
 To see what is staged
 	
@@ -248,7 +293,26 @@ Under the hood of the index
 
 --------------
 
+### 0. New file created in the working tree 
+
+![](http://i.imgur.com/xK5i9CS.png)
+
+--------------
+
+### 1. File added to index
+
+![](http://i.imgur.com/qdeE44C.png)
+
+--------------
+
 ## Every Git commit represents a single, atomic changeset
+
+	$ git commit
+--------------
+
+### 2. File commited to repository
+
+![](http://i.imgur.com/7ACc9aF.png)
 
 --------------
 
@@ -268,9 +332,9 @@ Under the hood of the index
 
 shows repo/branch history
 	
-	$ git log
+	$ git log --pretty=format:'%h %s'--graph
 
-*has a gazillion switches to make it display everything* 
+*rember what we said about gazillion switches* 
 
 --------------
 
@@ -323,7 +387,7 @@ List all tracked branches
 
 	$ git branch -a
 
-More hardcore details
+Hardcore details
 
 	$ git show-branch
 
@@ -534,16 +598,21 @@ Add new remotes using
 v--------------
 
 
-Push beaviour
+## Push beaviour
 
-* Matching (Git 1.x.): will push all your local branches to the ones with the same name on the remote.
+* Matching (Git 1.x.)
 
-* Simple (Git 2.x): will push only the current branch to the one that git pull would pull from, and also checks that their names match.
-
+* Simple (Git 2.x)
 
 
 	$ git config --global push.default matching/simple
 
+
+Note:
+
+Matching (Git 1.x.): will push all your local branches to the ones with the same name on the remote.
+
+Simple (Git 2.x): will push only the current branch to the one that git pull would pull from, and also checks that their names match.
 
 --------------
 ### Get all changes from remote
@@ -574,6 +643,20 @@ v--------------
 
 Note:
 ###Beware: automatically merges the commits without letting you review them first
+
+--------------
+
+## Advanced features
+
+* rebase
+
+* cherry-pick
+
+* bisect
+
+* stash/apply
+
+* rev-list
 
 v--------------
 
