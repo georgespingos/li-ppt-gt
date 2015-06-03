@@ -636,7 +636,7 @@ Tags are ***not*** pushed by default to remote repositories
 
 	$ git push --tags
 
-Tags are fetched when checking out a branch, ***not*** the entire repository
+Tags are fetched when checking out a branch, ***not*** of the entire repository
 
 	$ git fetch --tags
 
