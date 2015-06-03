@@ -417,11 +417,13 @@ Line by line
 
 	$ git blame my-file.ext
 
+	$ git blame -L 12,22 my-file.ext
+
 Cool hidden trick
 
 	$ git gui blame my-file.ext
 
-laods of switches: author name, regex, between commits, by line number...
+laods of switches: author name, regex, between commits, line nummbers...
 	
 --------------
 
