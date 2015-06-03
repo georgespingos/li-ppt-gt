@@ -328,6 +328,80 @@ Under the hood of the index
 
 --------------
 
+### Undoing commits - **Oops!**
+
+#### Safe Option
+
+make a new commit which undoes all the changes
+	
+	$ git revert SHA-I-hush
+
+More advnaced
+	
+	$ git revert -m 1 HEAD
+
+--------------
+
+### Undoing commits - **Oops!**
+
+---
+
+## Warning! Danger! 
+
+	$ git reset
+
+---
+
+--------------
+
+### Undoing commits - **Oops!**
+
+
+* remove the specified file from the staging area
+
+* leave the working directory unchanged
+
+* unstages a file without overwriting any changes
+
+
+	$ git reset <file>
+
+--------------
+
+### Undoing commits - **Oops!**
+
+* reset the staging area to match the most recent commit
+
+* leave the working directory unchanged 
+
+* unstages **all ** files without overwriting any changes
+
+
+	$ git reset
+
+--------------
+
+### Undoing commits - **Oops!**
+
+
+* Reset the staging area and the working directory to match the most recent commit
+
+* overwrite **all changes in the working directory**
+
+---
+
+### this obliterates all uncommitted changes 
+### (throws away local work)
+
+	$ git reset --hard
+
+---
+
+	
+
+--------------
+
+
 ### Reposity history
 
 shows repo/branch history
