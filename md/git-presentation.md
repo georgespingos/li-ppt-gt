@@ -286,6 +286,12 @@ Under the hood of the index
 
 ### Commiting changes
 
+## Every Git commit represents a single, atomic changeset
+
+	$ git commit
+
+--------------
+
 ## A commit is a two-step process
 
 * stage your changes 
@@ -303,11 +309,6 @@ Under the hood of the index
 
 ![](http://i.imgur.com/qdeE44C.png)
 
---------------
-
-## Every Git commit represents a single, atomic changeset
-
-	$ git commit
 --------------
 
 ### 2. File commited to repository
@@ -410,6 +411,20 @@ shows repo/branch history
 
 --------------
 
+### Rufiano
+
+Line by line 
+
+	$ git blame my-file.ext
+
+Cool hidden trick
+
+	$ git gui blame my-file.ext
+
+laods of switches: author name, regex, between commits, by line number...
+	
+--------------
+
 ## Branching
 
 A branch is essentially another way the repository takes (parallel universe).
@@ -438,7 +453,7 @@ every branch (or tag) you check out resides in a **separate ** folder.
 
 --------------
 
-When in a Git repository, you are always in a branch
+### In a Git repository, you are always in a branch
 
 	$ git branch
 
@@ -720,15 +735,18 @@ Note:
 
 ## Advanced features
 
-* rebase
+* git rebase
 
-* cherry-pick
+* git cherry-pick
 
-* bisect
+* git bisect
 
-* stash/apply
+* git stash/apply
 
-* rev-list
+* git rev-list
+
+* git grep
+
 
 v--------------
 
