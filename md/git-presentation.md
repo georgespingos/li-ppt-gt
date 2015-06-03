@@ -413,17 +413,23 @@ shows repo/branch history
 
 ### Rufiano
 
-Line by line 
+Who's to blame
 
 	$ git blame my-file.ext
 
 	$ git blame -L 12,22 my-file.ext
 
-Cool hidden trick
+loads of switches: regex, commit range, line numbers...
+
+---
+
+Hidden trick:
 
 	$ git gui blame my-file.ext
 
-laods of switches: author name, regex, between commits, line nummbers...
+	$ git difftool start-commit-sha end-commit-sha my-file.ext
+
+
 	
 --------------
 
@@ -594,6 +600,7 @@ Difference between branches
 Another:
 
 	$ git log my-branch..master
+
 
 --------------
 
