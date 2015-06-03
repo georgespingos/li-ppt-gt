@@ -11,7 +11,7 @@
 
 * Knows how to merge
 
-* encourages agile practices
+* Encourages agile practices
 
 Note:
 
