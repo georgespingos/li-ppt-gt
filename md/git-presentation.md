@@ -140,7 +140,7 @@ The name for the commit thats currently checked out in the working tree.
 
 --------------
 
-# A "master repoistory" is a policy decision, not a technical one.
+# A "master repository" is a policy decision, not a technical one.
 
 --------------
 
