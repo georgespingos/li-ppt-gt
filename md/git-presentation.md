@@ -335,7 +335,7 @@ Under the hood of the index
 
 make a new commit which undoes all the changes
 	
-	$ git revert SHA-I-hush
+	$ git revert SHA-I-hash
 
 More advnaced
 	
