@@ -27,45 +27,6 @@ Please stay calm and do not panic!
 
 # **Git does not support file locking by design**
 
----
-
---------------
-## Git setup (windows)
-
-msysgit 
-
-![](https://msysgit.github.io/img/gwindows_logo.png)
-
-
-Note:
-
-###pdf with installation instructions via email
-
---------------
-
-Git Extensions
-
-![](http://0install.de/feed-icons/GitExtensions.png)
-
-*Git Extensions is the only graphical user interface for Git that allows you control Git without using the commandline.*
-
-
---------------
-## Git Tools/Integration
-
-![](http://files.cyberciti.biz/cbzcache/3rdparty/terminal.png)
-
-You don't really need anything else!
-
-v--------------
-
-* Microsoft Visual Studio (even 2005)
-* Sublime Text 2/3
-* notepad++
-* eclipse
-* Oracle Solaris Studio
-* Anything from this decade...
-
 --------------
 
 ## Notables Settings (1)
@@ -241,16 +202,6 @@ Note:
 
 --------------
 
-### About Removing a file
-
----
-
-### Warning: Nuclear option 
-
-	$ git filter-branch --tree-filter 'rm -f file-doeradicate.ext'HEAD
-
----
-
 Note:
 Any versions of the file that are part of its history already
 committed in the repository remain in the object store and retain that history.
@@ -421,7 +372,28 @@ Who's to blame
 
 loads of switches: regex, commit range, line numbers...
 
----
+--------------
+
+
+### Find changes in Repo
+
+Find changes using criteria
+
+	$ git log -S[StringToSearch]
+
+[StringToSearch]: what to serach for 
+
+--------------
+
+### Compare Commits
+
+Who's to blame
+
+	$ git log -p [-x]
+
+x: how many commits back to compare with
+
+v--------------
 
 Hidden trick:
 
@@ -527,67 +499,6 @@ Git prevents you from deleting the current branch, switch somewhere else first!
 brings the contents of another branch  into the current branch.
 
 ### * To merge two branches, we have to start from the target branch *  
-
---------------
-
-### Merging - Happy path
-
-*Switch(checkout) to target branch
-
-	$ git checkout target-branch
-
-*Apply the merge
-
-	$ git merge my-new-feature-branch
-
-*We are done!
-
-Note:
-
-### Fast-Forward merges
-
---------------
-
-### Merging - Sad path (conflicts - 1)
-
-*Switch(checkout) to target branch
-
-	$ git checkout target-branch
-
-*Apply the merge
-
-	$ git merge my-new-feature-branch
-	
-	Auto-merging my-file.cpp
-	CONFLICT (content): Merge conflict in my-file.cpp
-	Automatic merge failed; fix conflicts and then commit the result.
-
-*Check your status
-
-	$ git status
-
-	On branch master
-	You have unmerged paths.
-	(fix conflicts and run "git commit")
-
---------------
-### Merging - Sad path (conflicts - 2)
-
-*Resolve conflicts
-	
-	$ git mergetool
-
-*Check status
-
-	$ git status
-	
-	On branch master
-	All conflicts fixed but you are still merging.
-	(use "git commit" to conclude merge)
-
-*Conclude merge
-
-	$ git commit
 
 --------------
 
